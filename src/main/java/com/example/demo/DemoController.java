@@ -1,10 +1,13 @@
 package com.example.demo;
 
+import com.cawl.mybatis.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  *
@@ -39,6 +42,9 @@ public class DemoController {
     @Autowired
     private Person person;
 
+    @Autowired
+    private UserMapper userMapper;
+
 
     @RequestMapping("/demo")
     public String hello(){
@@ -54,6 +60,11 @@ public class DemoController {
 
         System.out.println("---------");
         System.out.println(person);
+
+
+        //mybatis基于注解的映射
+//        List<User>  list = userMapper.findAll();
+//        System.out.println(list);
         return "demor!";
     }
 }
