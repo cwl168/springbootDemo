@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+name: abc
+person:
+  name: caoweilin
+  age: 10
+
+address:
+  - 上海
+  - 北京
+
+msg1: 'hello \n world'
+msg2: "hello \n world"
