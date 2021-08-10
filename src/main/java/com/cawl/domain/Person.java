@@ -1,8 +1,9 @@
-package com.example.demo;
+package com.cawl.domain;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+//读取配置文件
 @Component
 @ConfigurationProperties(prefix = "person")
 public class Person {

@@ -19,3 +19,10 @@ spring:
 spring:
   profiles:
     active: pro
+
+
+mybatis:
+#  config-location: 指定mybatis核心配置文件
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.cawl.mybatis.domain
+

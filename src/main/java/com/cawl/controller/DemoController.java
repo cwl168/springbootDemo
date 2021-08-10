@@ -1,6 +1,9 @@
-package com.example.demo;
+package com.cawl.controller;
 
+import com.cawl.mybatis.domain.User;
 import com.cawl.mybatis.mapper.UserMapper;
+import com.cawl.domain.Person;
+import com.cawl.mybatis.mapper.UserXmlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -45,6 +48,8 @@ public class DemoController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserXmlMapper userXmlMapper;
 
     @RequestMapping("/demo")
     public String hello(){
@@ -63,8 +68,14 @@ public class DemoController {
 
 
         //mybatis基于注解的映射
-//        List<User>  list = userMapper.findAll();
-//        System.out.println(list);
+        List<User> list = userMapper.findAll();
+        System.out.println(list);
+
+        //mybatis基于注解的映射
+        List<User> list2 = userXmlMapper.findAll();
+        System.out.println(list2);
+
+
         return "demor!";
     }
 }
