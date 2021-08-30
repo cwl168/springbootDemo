@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class generic09 {
     public static void main(String[] args) {
+
         Erasure<Integer> erasure = new Erasure<>();
         //通配符上限，通过反射获取字节码文件的Class
         Class <? extends  Erasure> cls = erasure.getClass();
