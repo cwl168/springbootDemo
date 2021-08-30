@@ -3,16 +3,17 @@ package com.cawl.generic;
 //泛型类
 public class generic02 {
     public static void main(String[] args) {
-        //1 泛型类在创建对象的时候，来指定操作的具体数据类型，
+        //1 泛型类在创建对象的时候，来指定操作的具体数据类型，String类型
         Generic<String> strGeneric = new Generic<>("cwl");
         String s = strGeneric.getKey();
         System.out.println(s);
 
+        //Integer类型
         Generic<Integer> intGeneric = new Generic<>(100);
         Integer i = intGeneric.getKey();
         System.out.println(i);
 
-        //没有指定类型将按照Object类型
+        //没有指定类型将按照Object类型  Object类型
         Generic str1 = new Generic("lin");
         Object st = str1.getKey();
         System.out.println(st);

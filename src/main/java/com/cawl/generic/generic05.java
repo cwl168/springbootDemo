@@ -4,6 +4,13 @@ public class generic05 {
     public static void main(String[] args) {
         Pair<String, Integer> p = new Pair<String, Integer>("cwl", 100);
         System.out.println(p.getKey() + "====" + p.getValue());
+
+        Pair<Integer, Integer> p1 = new Pair<Integer, Integer>(200, 100);
+        System.out.println(p1.getKey() + "====" + p1.getValue());
+
+        Apple a = new Apple("abc");
+        System.out.println(a.getKey());
+
     }
 }
 
@@ -40,5 +47,20 @@ class Pair<T, E> implements Generator<T> {
 
     public E getValue() {
         return value;
+    }
+}
+
+/**
+ * 实现泛型接口的类，不是泛型类，需要明确实现泛型接口的数据类型。
+ */
+class Apple<T> implements Generator<String> {
+    private T val;
+    public Apple(T val) {
+        this.val = val;
+    }
+
+    @Override
+    public String getKey() {
+        return "hello generic";
     }
 }

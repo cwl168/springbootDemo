@@ -15,6 +15,7 @@ public class UserCondition implements Condition {
         boolean flag = true;
         try {
             Class<?> cls = Class.forName("redis.clients.jedis.Jedis");
+            System.out.println(cls);
         } catch (ClassNotFoundException e) {
             flag = false;
         }
