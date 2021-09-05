@@ -17,9 +17,10 @@ public class generic09 {
 
         //类型都是object 而非泛型T标识 出现了无限制类型擦除
         for (Field field : Fields) {
-            System.out.println(field.getName() + ":"+field.getType().getSimpleName());
+            //System.out.println(field.getName() + ":"+field.getType().getSimpleName());
         }
 
+        //擦除方法中类型定义的参数
         Method[] methods = cls.getDeclaredMethods();
         for (Method method : methods) {
             System.out.println(method.getName() +":"+method.getReturnType().getSimpleName());
