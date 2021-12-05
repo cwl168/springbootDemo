@@ -10,7 +10,7 @@ public class generic01 {
         /*List list = new ArrayList();
         list.add("qqyumidi");
         list.add("cwl");
-        list.add(100);
+        list.add(100);//ClassCastException错误
         for (int i = 0; i < list.size(); i++) {
             String name = (String) list.get(i);
             System.out.println("name:" + name);
