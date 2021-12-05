@@ -17,6 +17,8 @@ public class DemoApplication {
         //启动SpringBoot应用 返回Spring的ioc容器
         ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 
+        //pom文件中导入spring-boot-starter-data-redis坐标 就能获取该bean(redisTemplate)，
+        // 如果没导入spring-boot-starter-data-redis坐标，则无法获取报错，用condition 判断是否需要注入redisTemplate
         //获取bean,redisTemplate
        Object redisTemplate = context.getBean("redisTemplate");
         System.out.println(redisTemplate);

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
+//Condition的使用demo
 @Configuration
 public class UserConfig {
     @Bean

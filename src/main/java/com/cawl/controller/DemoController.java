@@ -1,23 +1,27 @@
 package com.cawl.controller;
 
+import com.cawl.condition.ExpressFalseBean;
+import com.cawl.condition.ExpressTrueBean;
 import com.cawl.mybatis.domain.User;
 import com.cawl.mybatis.mapper.UserMapper;
 import com.cawl.domain.Person;
 import com.cawl.mybatis.mapper.UserXmlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- *
- *  springboot 读取配置三种方式：
- *  1 @value
- *  2 Environment 对象
- *  3 ConfigurationProperties 对象与属性绑定
+ * springboot 读取配置三种方式：
+ * 1 @value
+ * 2 Environment 对象
+ * 3 ConfigurationProperties 对象与属性绑定
  */
 @RestController
 public class DemoController {
@@ -51,8 +55,13 @@ public class DemoController {
     @Autowired
     private UserXmlMapper userXmlMapper;
 
+    @Autowired(required = false)
+    private ExpressTrueBean expressTrueBean;
+    @Autowired(required = false)
+    private ExpressFalseBean expressFalseBean;
+
     @RequestMapping("/demo")
-    public String hello(){
+    public String hello() {
         System.out.println(name);
         System.out.println(name2);
         System.out.println(age);
@@ -77,5 +86,16 @@ public class DemoController {
 
 
         return "demor!";
+    }
+
+    @RequestMapping(path = "/show")
+    public String show() {
+        System.out.println("express:" + env.getProperty("conditional.express"));
+        System.out.println("expressTrueBean:" + expressTrueBean);
+        System.out.println("expressFalseBean:" + expressFalseBean);
+        Map<String, String> result = new HashMap<>(4);
+        result.put("expressTrueBean", expressTrueBean == null ? "null ==> false" : expressTrueBean.getName());
+        result.put("expressFalseBean", expressFalseBean == null ? "null ==> true" : expressFalseBean.getName());
+        return JSONObject.toJSONString(result);
     }
 }

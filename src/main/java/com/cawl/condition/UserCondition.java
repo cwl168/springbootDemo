@@ -10,10 +10,12 @@ public class UserCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        //导入Jedis依赖，加载该bean,没有导入，则不加载
+        //条件：若导入Jedis坐标后，则加载该bean,若没有导入，则不加载
         // 思路：判断redis.clients.jedis.class 是否存在
+        //return false;
         boolean flag = true;
         try {
+            //没有导入jedis坐标，则没有加载到Jedis字节码，会抛异常
             Class<?> cls = Class.forName("redis.clients.jedis.Jedis");
             System.out.println("matches:"+cls);
         } catch (ClassNotFoundException e) {
